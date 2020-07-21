@@ -26,6 +26,14 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+    
+      <!-- spring-webmvc -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-webmvc</artifactId>
+		<version>4.3.6.RELEASE</version>
+	</dependency>
+    
   </dependencies>
 
   <build>

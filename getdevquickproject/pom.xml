@@ -21,7 +21,12 @@
   </properties>
 
   <dependencies>
-  
+  <!-- linking backend with frontend -->
+  <dependency>
+  <groupId>net.olu</groupId>
+  <artifactId>backend</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  </dependency>
   <!-- java ee-api -->
 <dependency>
     <groupId>javax</groupId>
