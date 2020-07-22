@@ -40,11 +40,23 @@ public class PageController {
 		//fetch a single book
 		Book book=null;
 		book = bookDAO.getById(id);
-		mv.addObject("title","Books");
+		mv.addObject("title",book.getName());
 		mv.addObject("genres",genreDAO.list());
 		mv.addObject("name",book.getName());
 		mv.addObject("description",book.getDescription());
 		mv.addObject("rating",book.getRating());
+		
+		return mv;
+	}
+	
+	@RequestMapping(value= "/managebooks")
+	public ModelAndView ManageBook() {
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("userClickManage", true);
+		mv.addObject("storename","Dominoe Books");
+		mv.addObject("title","Manage Books");
+		mv.addObject("genres",genreDAO.list());
+		mv.addObject("books",bookDAO.list());
 		
 		return mv;
 	}

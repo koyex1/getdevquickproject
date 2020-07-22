@@ -9,7 +9,7 @@
     <a class="nav-link" href="#">Contact</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#">ManageBooks</a>
+    <a class="nav-link disabled" href="${Root}/managebooks">ManageBooks</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled" href="#">Login</a>

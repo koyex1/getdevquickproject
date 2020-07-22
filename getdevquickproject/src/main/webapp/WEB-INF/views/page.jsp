@@ -34,13 +34,17 @@
 <%@include file="./shared/genrebar.jsp" %>
 
 <!-- OPTIONAL VIEWS -->
-<!-- Home bar -->
+<!-- Home page -->
 <c:if test="${userClickHome == true }">
 <%@include file="./shared/home.jsp" %>
 </c:if>
-<!-- book bar -->
+<!--selected book page -->
 <c:if test="${userClickBook == true }">
 <%@include file="./shared/book.jsp" %>
+</c:if>
+<!-- Managebooks page -->
+<c:if test="${userClickManage == true }">
+<%@include file="./shared/managebooks.jsp" %>
 </c:if>
 
 </div>

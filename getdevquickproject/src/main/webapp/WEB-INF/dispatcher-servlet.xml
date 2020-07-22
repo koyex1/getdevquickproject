@@ -12,8 +12,8 @@
    ">
    
    
-   <context:component-scan base-package="net.olu.getdevquickproject.controller"/>
-   <context:component-scan base-package="net.olu.backend.daoimpl"/>
+   <context:component-scan base-package="net.olu.getdevquickproject"/>
+   <context:component-scan base-package="net.olu.backend"/>
    
    <bean id="viewResolver"
    		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
