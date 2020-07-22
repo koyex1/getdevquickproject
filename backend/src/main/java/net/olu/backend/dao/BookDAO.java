@@ -6,6 +6,10 @@ import net.olu.backend.dto.Book;
 
 public interface BookDAO {
 
-	List<Book> list();
-		 Book getById(int id);
+			  List<Book> list();
+	   			   Book getById(int id);
+	   boolean add(Book book);
+	boolean update(Book book);
+	boolean delete(Book book);
+
 }
