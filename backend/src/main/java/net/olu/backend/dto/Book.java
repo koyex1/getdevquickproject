@@ -14,8 +14,14 @@ public class Book {
 	private String description;
 	private int genreId;
 	private int rating;
+//	private boolean isActive;
 	
-	
+//	public boolean isActive() {
+//		return isActive;
+//	}
+//	public void setActive(boolean isActive) {
+//		this.isActive = isActive;
+//	}
 	public int getId() {
 		return id;
 	}

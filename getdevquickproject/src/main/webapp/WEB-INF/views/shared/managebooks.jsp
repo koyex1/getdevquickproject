@@ -1,15 +1,11 @@
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 
-<c:if test="${operation == 'submit' }">
+<c:if test="${not empty operation}">
 <div class="alert alert-success glyphicon glyphicon-ok-circle" role="alert">
  ${operation}
 </div>
 </c:if>
-<c:if test="${operation == 'delete' }">
-<div class="alert alert-success glyphicon glyphicon-ok-circle" role="alert">
- ${operation}
-</div>
-</c:if>
+
 
 <div class="container">
 <sf:form modelAttribute="book"
@@ -41,7 +37,7 @@ method="POST"
   </div>
   
   <button type="submit" class="btn btn-success">
-  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Success
+  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Add to Shelf
   </button>
   
   <sf:input path="rating" type="hidden"/>
@@ -63,9 +59,9 @@ method="POST"
       <td>${item.description }</td>
        <td>${item.rating }</td>
 <td>
-	<a href="${Root}/managebooks" class="btn btn-primary">
+	<a href="${Root}/managebooks/${item.id}/edit" class="btn btn-primary">
 	<span class="glyphicon glyphicon-pencil"></span>
-	Edit</a>
+	Organize</a>
 </td>
 
 <td>

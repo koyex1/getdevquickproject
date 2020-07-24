@@ -85,8 +85,8 @@ public class PageController {
 			if(operation.equals("submit")) {
 				mv.addObject("operation","Succefully submitted Form");
 			}
-			if(operation.equals("delete")) {
-				mv.addObject("operation","Removed book from Shelf successfully");
+			if(operation.equals("update")) {
+				mv.addObject("operation","Succefully Updated Form");
 			}
 		}
 		
@@ -94,15 +94,41 @@ public class PageController {
 		return mv;
 	}
 	
+	//contains a combination LIST and a SINGLE empty item
+		@GetMapping(value= "/managebooks/{id}/edit")
+		public ModelAndView showUpdate(@PathVariable(name= "id") int id) {
+			ModelAndView mv = new ModelAndView("page");
+			mv.addObject("userClickManage", true);
+			mv.addObject("title", "Organize/Add to Shelf");
+			mv.addObject("genres",genreDAO.list());
+			mv.addObject("books",bookDAO.list());
+			
+			//add new-book
+			Book nbook = new Book();
+			nbook = bookDAO.getById(id);
+			//latched to form field. nbook empty so form field will be
+			//empty however with ever with every letter typed it is
+			//latched to nbook.. this is how Edit refills field with characters
+			mv.addObject("book",nbook);
+			
+			
+			return mv;
+		}
+		
 	//BASICALLY JUST HANDLES SUBMISSION AND NOTHING ELSE REALLY
 	@PostMapping(value= "/managebooks")
 	//POST HTTP modelattribute to mbook class object
 	public String handleSubmission(@ModelAttribute("book") Book mbook) {
 		
-		//add Book
+		if(mbook.getId()==0) {
 		bookDAO.add(mbook);
-		
 		return "redirect:/managebooks?operation=submit";
+		}
+		else {
+		bookDAO.update(mbook);
+		return "redirect:/managebooks?operation=update";
+		}
+		
 	}
 	
 	
