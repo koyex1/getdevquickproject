@@ -11,6 +11,7 @@ CREATE TABLE book(
 	description VARCHAR(255),
 	genreId INT,
 	rating INT DEFAULT 0,
+	active BOOLEAN, 
 	
 	CONSTRAINT pk_book_id PRIMARY KEY (id),
 	CONSTRAINT fk_book_genreId FOREIGN KEY (genreId) REFERENCES genre(id),

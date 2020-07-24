@@ -8,6 +8,7 @@
       <div class="caption">
         <h3>${item.name}</h3>
         <p>${item.description}</p>
+        <h4>${item.author}</h4>
         <h4>${item.genreId}</h4>
       </div>
     </div>

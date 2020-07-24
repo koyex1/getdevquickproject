@@ -105,5 +105,24 @@ public class BookDAOImpl implements BookDAO {
 		}
 		
 	}
+
+	@Override
+	public List<Book> activeList() {
+		String selectActiveBooks= "FROM Book WHERE active= :active";
+		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveBooks, Book.class);
+		query.setParameter("active",true);
+		
+		return query.getResultList();
+	}
+
+	@Override
+	public List<Book> activeListByGenre(int genreId) {
+		String selectActiveBooksByGenre= "FROM Book WHERE active= :active AND genreId=:genreId";
+		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveBooksByGenre, Book.class);
+		query.setParameter("active",true).setParameter("genreId", genreId);
+		
+		
+		return query.getResultList();
+	}
 	
 }

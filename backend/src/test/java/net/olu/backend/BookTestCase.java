@@ -60,9 +60,18 @@ import net.olu.backend.dto.Book;
 //			assertEquals("failed to delete single Book from table",true, bookDAO.delete(book));
 //		}
 	//	
-		@Test
-		public void testListBook() {
-			assertEquals("failed to fetch list of Book from table",4, bookDAO.list().size());
-		}
+//		@Test
+//		public void testListBook() {
+//			assertEquals("failed to fetch list of Book from table",4, bookDAO.list().size());
+//		}
+//		@Test
+//		public void testActiveListBook() {
+//			assertEquals("failed to fetch list of Book from table",2, bookDAO.activeList().size());
+//		}
+//		@Test
+//		public void testActiveListBookByGenre() {
+//			assertEquals("failed to fetch list of Book from table",3, bookDAO.activeListByGenre(6).size());
+//		}
+		
 	}
 

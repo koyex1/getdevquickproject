@@ -11,17 +11,24 @@ public class Book {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
+	private String author;
 	private String description;
 	private int genreId;
 	private int rating;
-//	private boolean isActive;
+	private boolean active;
 	
-//	public boolean isActive() {
-//		return isActive;
-//	}
-//	public void setActive(boolean isActive) {
-//		this.isActive = isActive;
-//	}
+	public boolean getActive() {
+		return active;
+	}
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
 	public int getId() {
 		return id;
 	}

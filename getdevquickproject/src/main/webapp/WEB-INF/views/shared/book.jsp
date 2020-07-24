@@ -7,6 +7,7 @@
         <h3>${name}</h3>
         <p>${description}</p>
         <p>${rating}</p>
+        <h4>${author}</h4>
         <h4>${genre}</h4>
       </div>
     </div>

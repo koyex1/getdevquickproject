@@ -3,7 +3,7 @@
 <c:forEach items= "${genres}" var= "item">
   <li class="nav-item">
   
-    <a class="nav-link disabled" href="#">${item.name}</a>
+    <a class="nav-link disabled" href="${Root}/genre/${item.id}">${item.name}</a>
   
 
   </li>

@@ -37,7 +37,21 @@ public class PageController {
 		//
 		
 		mv.addObject("genres",genreDAO.list());
-		mv.addObject("books",bookDAO.list());
+		mv.addObject("books",bookDAO.activeList());
+		
+		return mv;
+	}
+	@RequestMapping(value= {"/genre/{id}"})
+	public ModelAndView showByGenre(@PathVariable("id") int id) {
+		ModelAndView mv = new ModelAndView("page");
+		Genre genre=null;
+		genre=genreDAO.getById(id);
+		mv.addObject("userClickHome", true);
+		mv.addObject("storename","Dominoe Books");
+		mv.addObject("title",genre.getName());
+		//
+		mv.addObject("genres",genreDAO.list());
+		mv.addObject("books",bookDAO.activeListByGenre(id ));
 		
 		return mv;
 	}
@@ -71,7 +85,7 @@ public class PageController {
 		mv.addObject("userClickManage", true);
 		mv.addObject("title", "Organize/Add to Shelf");
 		mv.addObject("genres",genreDAO.list());
-		mv.addObject("books",bookDAO.list());
+		mv.addObject("books",bookDAO.activeList());
 		
 		//add new-book
 		Book nbook = new Book();
@@ -82,11 +96,14 @@ public class PageController {
 		
 		//message box
 		if(operation !=null) {
-			if(operation.equals("submit")) {
-				mv.addObject("operation","Succefully submitted Form");
+			if(operation.equals("add")) {
+				mv.addObject("operation","Succefully Added Book");
 			}
 			if(operation.equals("update")) {
-				mv.addObject("operation","Succefully Updated Form");
+				mv.addObject("operation","Succefully Organized Book");
+			}
+			if(operation.equals("delete")) {
+				mv.addObject("operation","Succefully Removed Book");
 			}
 		}
 		
@@ -96,12 +113,12 @@ public class PageController {
 	
 	//contains a combination LIST and a SINGLE empty item
 		@GetMapping(value= "/managebooks/{id}/edit")
-		public ModelAndView showUpdate(@PathVariable(name= "id") int id) {
+		public ModelAndView showUpdate(@PathVariable("id") int id) {
 			ModelAndView mv = new ModelAndView("page");
 			mv.addObject("userClickManage", true);
 			mv.addObject("title", "Organize/Add to Shelf");
 			mv.addObject("genres",genreDAO.list());
-			mv.addObject("books",bookDAO.list());
+			mv.addObject("books",bookDAO.activeList());
 			
 			//add new-book
 			Book nbook = new Book();
@@ -122,12 +139,22 @@ public class PageController {
 		
 		if(mbook.getId()==0) {
 		bookDAO.add(mbook);
-		return "redirect:/managebooks?operation=submit";
+		return "redirect:/managebooks?operation=add";
 		}
 		else {
 		bookDAO.update(mbook);
 		return "redirect:/managebooks?operation=update";
 		}
+	}
+		@PostMapping(value= "/managebooks/{id}/delete")
+		//POST HTTP modelattribute to mbook class object
+		public String handleDelete(@PathVariable("id")int id) {
+			
+			Book book=new Book();
+			book=bookDAO.getById(id);
+			book.setActive(false);
+			bookDAO.update(book);
+			return "redirect:/managebooks?operation=delete";
 		
 	}
 	
