@@ -9,7 +9,7 @@
     <a class="nav-link" href="#">Contact</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="${Root}/managebooks">ManageBooks</a>
+    <a class="nav-link disabled" href="${Root}/managebooks">Organize/Add to Shelf</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled" href="#">Login</a>

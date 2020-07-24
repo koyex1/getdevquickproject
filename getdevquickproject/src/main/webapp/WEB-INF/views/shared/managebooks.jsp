@@ -1,21 +1,85 @@
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+
+<c:if test="${operation == 'submit' }">
+<div class="alert alert-success glyphicon glyphicon-ok-circle" role="alert">
+ ${operation}
+</div>
+</c:if>
+<c:if test="${operation == 'delete' }">
+<div class="alert alert-success glyphicon glyphicon-ok-circle" role="alert">
+ ${operation}
+</div>
+</c:if>
+
 <div class="container">
-<form>
+<sf:form modelAttribute="book"
+action="${Root}/managebooks"
+method="POST"
+>
   <div class="form-group row">
     <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Book Title</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Book Title">
+      <sf:input path="name" type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Book Title"/>
     </div>
+  </div>
+  <div class="form-group row">
+    <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Genre</label>
+    <div class="col-sm-10">
+    <sf:select path="genreId" class="form-control" id="exampleFormControlSelect1"
+     items="${genres}"
+     itemLabel="name"
+     itemValue="id"
+    />
+   </div>
   </div>
   
    <div class="form-group row">
     <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label col-form-label-sm">Description</label>
      <div class="col-sm-10">
-    <textarea class="form-control form-control-sm" id="colFormLabelSm"  rows="4"></textarea>
+    <sf:textarea path="description" class="form-control form-control-sm" id="colFormLabelSm"  rows="4"/>
   </div>
   </div>
   
   <button type="submit" class="btn btn-success">
   <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Success
   </button>
-</form>
+  
+  <sf:input path="rating" type="hidden"/>
+</sf:form>
+
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+   <c:forEach items="${books}" var="item">
+    <tr>
+   
+      <td>${item.name }</td>
+      <td>${item.description }</td>
+       <td>${item.rating }</td>
+<td>
+	<a href="${Root}/managebooks" class="btn btn-primary">
+	<span class="glyphicon glyphicon-pencil"></span>
+	Edit</a>
+</td>
+
+<td>
+	<a href="${Root}/managebooks" class="btn btn-danger">
+	<span class="glyphicon glyphicon-trash"></span>
+	Delete</a>
+</td>
+
+    </tr>
+      </c:forEach>
+ 
+    
+  </tbody>
+</table>
+
+
 </div>

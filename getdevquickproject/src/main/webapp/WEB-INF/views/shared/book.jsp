@@ -1,6 +1,15 @@
-<div>
-<h1>${name}</h1>
-<h2>${description }</h2>
-<h2>${genre.name}</h2>
-<h2>${rating}</h2>
+<div class="col">
+ 
+  <div class="col-md-4 col-md-4">
+    <div class="thumbnail">
+      <img src="..." alt="...">
+      <div class="caption">
+        <h3>${name}</h3>
+        <p>${description}</p>
+        <p>${rating}</p>
+        <h4>${genre}</h4>
+      </div>
+    </div>
+  </div>
+  
 </div>
