@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow.xsd">
+
+<!-- connecting the form dto -->
+<var name="user" class="net.olu.backend.dto.User"/>
+
+<!-- onstart connect to this handler and dump results in user-->
+<on-start>
+<evaluate expression="registerHandler.start()" result="flowScope.registerModel"/>
+</on-start>
+
+<!--the Start state -->
+<!-- ORDER MATTERS A LOT: view state info-confirm-success -->
+<!-- signup folder is used as a url to bring one to the webflow package(signup-flow.xml)-->
+<!-- communication starts from there and the first order of service is to take automaticaaly to signup-info.jsp(auto view state) -->
+
+<!-- 1ST FLOW/1ST STATE -->
+<view-state id="info" view="flows/signup/signup-info" model="user">
+<transition on="confirm" to="confirm"/>
+<on-exit>
+<evaluate expression="registerHandler.setUser(flowScope.registerModel, user)"/>
+</on-exit>
+</view-state>
+
+<!-- 2ND FLOW/ 2ND STATE -->
+<view-state id="confirm" view="flows/signup/signup-confirm" model="flowScope.registerModel">
+<transition on="info" to="info"/>
+<transition on="complete" to="complete"/>
+</view-state>
+
+<!-- ABSTRACTED/HIDDEN ACTION FLOW/ACTION STATE: DOESNT HAVE A PAGE -->
+<action-state id="complete">
+<evaluate expression="registerHandler.save(flowScope.registerModel)"/>
+<transition on="success" to="success"/>
+</action-state>
+
+
+<!-- FINAL FLOW/FINAL STATE -->
+<end-state id="success" view="flows/signup/signup-success">
+</end-state>
+
+
+<!-- works with global transistion -->
+<end-state id="home" view="externalRedirect:contextRelative:/"/>
+<!-- GLOBAL TRANSISITION -->
+<!-- on="id" to="id" & id latched to view-->
+<global-transitions>
+<transition on="home" to="home"/>
+</global-transitions>
+
+</flow>
+		

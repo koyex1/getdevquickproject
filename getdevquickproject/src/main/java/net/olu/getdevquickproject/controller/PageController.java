@@ -157,7 +157,13 @@ public class PageController {
 			return "redirect:/managebooks?operation=delete";
 		
 	}
-	
+//		@RequestMapping(value= {"/signup"})
+//		public ModelAndView signup() {
+//			ModelAndView mv = new ModelAndView("page");
+//			mv.addObject("title", "MVC not Webflow");
+//	
+//			return mv;
+//		}
 	
 	//to give all mapping in the controller the variable genres
 //	@ModelAttribute("genres")

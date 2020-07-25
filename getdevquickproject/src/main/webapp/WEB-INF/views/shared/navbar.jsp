@@ -12,9 +12,9 @@
     <a class="nav-link disabled" href="${Root}/managebooks">Organize/Add to Shelf</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#">Login</a>
+    <a class="nav-link disabled" href="${Root}/login">Login</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link disabled" href="#">Sign Up</a>
+    <a class="nav-link disabled" href="${Root}/signup">Sign Up</a>
   </li>
 </ul>
