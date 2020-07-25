@@ -20,6 +20,8 @@ public class User implements Serializable{
 	private String lastName;
 	private String email;
 	private String password;
+	final boolean enabled=true;
+	final String role = "user";
 
 	public int getId() {
 		return id;

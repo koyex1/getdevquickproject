@@ -1,3 +1,5 @@
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+
 <div >
  <c:forEach items="${books}" var="item" >  
  <div class="col">
@@ -9,8 +11,8 @@
         <h3>${item.name}</h3>
         <p>${item.description}</p>
         <h4>${item.author}</h4>
-        <h4>${item.genreId}</h4>
       </div>
+      
     </div>
   </div>
   </a>

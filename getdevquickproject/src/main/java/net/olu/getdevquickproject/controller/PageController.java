@@ -2,12 +2,10 @@ package net.olu.getdevquickproject.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import net.olu.backend.dao.BookDAO;
 import net.olu.backend.dao.GenreDAO;
 import net.olu.backend.dto.Book;
+import net.olu.backend.dto.BookRating;
 import net.olu.backend.dto.Genre;
 
 
@@ -67,7 +66,8 @@ public class PageController {
 		//BEST THING ABOUT CLASSES
 		Genre genre;
 		genre= genreDAO.getById(book.getGenreId());
-		
+//		BookRating nbookrating= new BookRating();
+//		mv.addObject("bookrating",nbookrating);
 		mv.addObject("title",book.getName());
 		mv.addObject("genres",genreDAO.list());
 		mv.addObject("name",book.getName());
@@ -171,6 +171,12 @@ public class PageController {
 //			
 //			return genreDAO.list();
 //		}
-	
+	@RequestMapping(value="/login")
+	public ModelAndView login() {
+		ModelAndView mv= new ModelAndView("login");
+		mv.addObject("title", "Login");
+		
+		return mv;
+	}
 	
 }
