@@ -17,8 +17,9 @@
    <!-- LOADING FILES/LOCATION/ENTRY POINTS FOR (CONTROLLER & MODEL), VIEW, ASSETS & FLOW RESPECTIVELY-->
    
    <context:component-scan base-package="net.olu.getdevquickproject"/>
+   <!-- backend component scan relocated from dispatcher-servlet.xml to spring-security.xml
    <context:component-scan base-package="net.olu.backend"/>
-   
+   -->
    <bean id="viewResolver"
    		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
    		<property name="prefix" value="/WEB-INF/views/"/>
