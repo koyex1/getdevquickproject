@@ -1,11 +1,13 @@
 package net.olu.backend.daoimpl;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import net.olu.backend.dao.AccountDAO;
+import net.olu.backend.dto.Book;
 import net.olu.backend.dto.BookRating;
 import net.olu.backend.dto.User;
 
@@ -42,5 +44,16 @@ public class AccountDAOImpl implements AccountDAO {
 			}
 			
 		}
+
+
+	@Override
+	public User getUserByEmail(String email) {
+		
+		String selectUserByEmail= "FROM User WHERE email= :email";
+		return sessionFactory.getCurrentSession()
+				.createQuery(selectUserByEmail, User.class)
+					.setParameter("email",email)
+						.getSingleResult();
+	}
 	}
 

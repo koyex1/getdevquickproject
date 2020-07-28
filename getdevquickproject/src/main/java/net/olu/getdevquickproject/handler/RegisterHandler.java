@@ -11,6 +11,7 @@ import net.olu.getdevquickproject.model.RegisterModel;
 //the controller where you will set the values and retrieve values 
 //either as a single value or a list depending on what you need.
 //the xml sheet is also a sub-part of it.
+
 @Component
 public class RegisterHandler {
 	

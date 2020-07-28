@@ -27,25 +27,35 @@ private static AnnotationConfigApplicationContext context;
 		accountDAO = (AccountDAO)context.getBean("accountDAO");
 	}
 	
-	@Test
-	public void testAddUser() {
-		
-		user = new User();
-		user.setFirstName("Olumide");
-		user.setLastName("Koyenikan");
-		user.setEmail("olumide.koyenikan@gmail.com");
-		user.setPassword("123");
-		
-		assertEquals("failed to add user to table",true, accountDAO.addUser(user));
-		
-		bookrating = new BookRating();
-		bookrating.setTitle("War");
-		bookrating.setRating(5);
+//	@Test
+//	public void testAddUser() {
+//		
+//		user = new User();
+//		user.setFirstName("Olumide");
+//		user.setLastName("Koyenikan");
+//		user.setEmail("olumide.koyenikan@gmail.com");
+//		user.setPassword("123");
+//		
+//		assertEquals("failed to add user to table",true, accountDAO.addUser(user));
+//		
+//		bookrating = new BookRating();
+//		bookrating.setTitle("War");
+//		bookrating.setRating(5);
+//	
+//		//link user with bookrating and user
+////		bookrating.setUserId(user.getId());
+//		
+//		assertEquals("failed to add user to table",true, accountDAO.addBookRating(bookrating));
+//		
+//	}
 	
-		//link user with bookrating and user
-//		bookrating.setUserId(user.getId());
+	@Test
+	public void testGetUserByEmail() {
+	
+		user = accountDAO.getUserByEmail("olumide.koyenikan@gmail.com");
 		
-		assertEquals("failed to add user to table",true, accountDAO.addBookRating(bookrating));
+		
+		assertEquals("failed to get password from table", "123" , user.getPassword());
 		
 	}
 	

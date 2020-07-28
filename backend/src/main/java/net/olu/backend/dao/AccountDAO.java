@@ -9,4 +9,5 @@ public interface AccountDAO {
 //add a user
 	boolean addUser(User user);
 	boolean addBookRating(BookRating bookrating);
+	User getUserByEmail(String email);
 }

@@ -1,4 +1,3 @@
-<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 
 <div >
  <c:forEach items="${books}" var="item" >  

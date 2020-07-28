@@ -20,7 +20,7 @@
 <!-- 1ST FLOW/1ST STATE -->
 <view-state id="info" view="flows/signup/signup-info" model="user">
 <transition on="confirm" to="confirm"/>
-<on-exit>
+<on-exit> <!-- model user inputed in setuser below -->
 <evaluate expression="registerHandler.setUser(flowScope.registerModel, user)"/>
 </on-exit>
 </view-state>

@@ -23,5 +23,15 @@
   <li class="nav-item">
     <a class="nav-link disabled" href="${Root}/signup">Sign Up</a>
   </li>
+   </security:authorize>
+   <security:authorize access="isAuthenticated()">
+   <li class="nav-item">
+    <h4>${userModel.fullName}</h4>
+  </li>
+  
+  <li class="nav-item">
+    <a class="nav-link disabled" href="${Root}/logout">Logout</a>
+  </li>
   </security:authorize>
+ 
 </ul>
