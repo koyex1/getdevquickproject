@@ -137,13 +137,13 @@ public class PageController {
 		
 		//message Box operation
 		if(operation !=null) {
-			if(operation.equals("add")) {
+			if(operation.equals("added")) {
 				mv.addObject("operation","Succefully Added Book");
 			}
-			if(operation.equals("update")) {
+			if(operation.equals("updated")) {
 				mv.addObject("operation","Succefully Organized Book");
 			}
-			if(operation.equals("delete")) {
+			if(operation.equals("deleted")) {
 				mv.addObject("operation","Succefully Removed Book");
 			}
 		}
@@ -162,7 +162,7 @@ public class PageController {
 			mv.addObject("books",bookDAO.activeList());
 			//add new-book
 			//latched to form field. nbook empty so form field will be
-			//empty however with ever with every letter typed it is
+			//empty however withn ever with every letter typed it is
 			//latched to nbook.. this is how Edit refills field with characters.
 			
 			//GET single book operation
@@ -180,8 +180,9 @@ public class PageController {
 		
 		if(mbook.getId()==0) {
 		//add single book operation ADD UPDATE DELETE GET all single opertions
+			mbook.setActive(true);
 		bookDAO.add(mbook);
-		return "redirect:/managebooks?operation=add";
+		return "redirect:/managebooks?operation=added";
 		}
 		else {
 		//update single book operation ADD UPDATE DELETE GET all single operations
@@ -198,7 +199,7 @@ public class PageController {
 			book=bookDAO.getById(id);
 			book.setActive(false);
 			bookDAO.update(book);
-			return "redirect:/managebooks?operation=delete";
+			return "redirect:/managebooks?operation=deleted";
 		
 	}
 //		@RequestMapping(value= {"/signup"})

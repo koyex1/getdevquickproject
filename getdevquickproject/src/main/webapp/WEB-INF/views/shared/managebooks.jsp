@@ -49,6 +49,7 @@ method="POST"
   <!-- HIDDEN -->
   <sf:input path="rating" type="hidden"/>
    <sf:input path="active" type="hidden"/>
+   <sf:input path="id" type="hidden"/>
    
 </sf:form>
 
@@ -58,7 +59,7 @@ method="POST"
       <th scope="col">Title</th>
       <th scope="col">Description</th>
       <th scope="col">Author</th>
-      <th scope="col">Rating</th>
+      <th scope="col">Rating</th> 
     </tr>
   </thead>
   <tbody>
